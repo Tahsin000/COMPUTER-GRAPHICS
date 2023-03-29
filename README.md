@@ -31,7 +31,7 @@
 3. [Draw a Circle using using Bresenham's Algorithm](Lab-4/Draw%20a%20Circle%20using%20Trigonometric%20method.cpp)
 4. [Draw a Circle using Midpoint Algorithm](Lab-4/Draw%20a%20Circle%20using%20Midpoint%20Algorithm.cpp)
 
-# Lab - 5
+## Lab - 5
 
 1. [Ellipse using polynomial method](Lab-5/Ellipse%20using%20polynomial%20method.cpp)
 2. [Ellipse using Trigonometric method](Lab-5/Ellipse%20using%20Trigonometric%20method.cpp)

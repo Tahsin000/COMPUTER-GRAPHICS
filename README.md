@@ -35,5 +35,11 @@
 
 1. [Ellipse using polynomial method](Lab-5/Ellipse%20using%20polynomial%20method.cpp)
 2. [Ellipse using Trigonometric method](Lab-5/Ellipse%20using%20Trigonometric%20method.cpp)
-3. [Arcs](Lab-5/Arcs.cpp)
+3. [Arcs](Lab-5/Draw%20a%20Arcs%20using%20using%20polynomial%20method.cpp)
 4. [Sectors](Lab-5/Sectors.cpp)
+
+## Lab - 5
+
+1. [Bitmap font](Lab-6/Bitmap%20font.cpp)
+2. [Draw Boundary Fill](Lab-6/Draw%20Boundary%20Fill.cpp)
+3. [Flood Fill algorithm](Lab-6/Flood%20Fill%20algorithm.cpp)

@@ -38,8 +38,14 @@
 3. [Arcs](Lab-5/Draw%20a%20Arcs%20using%20using%20polynomial%20method.cpp)
 4. [Sectors](Lab-5/Sectors.cpp)
 
-## Lab - 5
+## Lab - 6
 
-1. [Bitmap font](Lab-6/Bitmap%20font.cpp)
-2. [Draw Boundary Fill](Lab-6/Draw%20Boundary%20Fill.cpp)
-3. [Flood Fill algorithm](Lab-6/Flood%20Fill%20algorithm.cpp)
+1. [Draw Boundary Fill](Lab-6/Draw%20Boundary%20Fill.cpp)
+2. [Flood Fill algorithm](Lab-6/Flood%20Fill%20algorithm.cpp)
+3. [Bitmap font](Lab-6/Bitmap%20font.cpp)
+4. [Outline font](Lab-6/Outline%20font.cpp)
+
+## Lab - 7
+
+1. [Rotate a point about origin](Lab-7/Rotate%20a%20point%20about%20origin.cpp)
+1. [Rotate a point about another point.](Lab-7/Rotate%20a%20point%20about%20another%20point..cpp)

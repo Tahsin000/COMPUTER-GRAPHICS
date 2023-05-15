@@ -2,12 +2,18 @@
 
 <hr />
 
-## Rotate a point about another point
+## Scaling a point about origin
 
-![Rotate a point about another point](<./assets/image%20(1).png>)
+![Scaling a point about origin](<./assets/image%20(1).png>)
 
 <hr />
 
-## Rotate a point about origin
+## Scaling a triangle about origin.
 
-![Rotate a point about origin](<./assets/image%20(2).png>)
+![Scaling a triangle about origin.](<./assets/image%20(2).png>)
+
+<hr />
+
+## Scaling a triangle about another point.
+
+![Scaling a triangle about another point.](<./assets/image%20(3).png>)

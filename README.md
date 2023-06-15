@@ -63,4 +63,11 @@
 ## [Lab - 10 | 11](./10.%20Lab-10%20%2C%2011/)
 
 1. [Liang-Barskey algorithm](./10.%20Lab-10%20%2C%2011/Liang-Barskey%20algorithm.cpp)
-1. [Sutherland-Hodgman](./10.%20Lab-10%20%2C%2011/Sutherland-Hodgman.cpp)
+2. [Sutherland-Hodgman](./10.%20Lab-10%20%2C%2011/Sutherland-Hodgman.cpp)
+
+## [Mini Project](./10.%20Lab-10%20%2C%2011/)
+
+1. [Construct a 3D wire frame model with animation (minimum)](./11.%20Mini%20Project/Construct%20a%203D%20wire%20frame%20model.cpp)
+2. [Consist of vertex listing/polygon listing](./11.%20Mini%20Project/Consist%20of%20vertex%20listing.cpp)
+3. [Consider hidden surface](./11.%20Mini%20Project/Consider%20hidden%20surface.cpp)
+4. [Rotate and show the different surface](./11.%20Mini%20Project/Rotate%20and%20show%20the%20different%20surface.cpp)

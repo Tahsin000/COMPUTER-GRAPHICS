@@ -21,7 +21,7 @@
 ## [Lab - 3](./3.%20Lab-3/)
 
 1. [Draw Line using line equation](3.%20Lab-3/Draw%20Line%20using%20line%20equation.cpp)
-2. [Draw Line using line equation]3.%20(Lab-3/Draw%20line%20using%20DDA%20algorithm.cpp)
+2. [Draw Line using line equation](3.%20Lab-3/Draw%20line%20using%20DDA%20algorithm.cpp)
 3. [Draw Line using Bresenham's line algorithm](3.%20Lab-3/Draw%20Line%20using%20Bresenham's%20line%20algorithm.cpp)
 
 ## [Lab - 4](./4.%20Lab-4/)

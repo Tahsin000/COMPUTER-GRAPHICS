@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGL Shapes</title>
+    <script src="../gl-matrix-min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script type="text/javascript">
+        // Vertex Listing
+        var vertices = [
+            [-0.5, -0.5, -0.5], // Vertex 0
+            [-0.5, -0.5, 0.5],  // Vertex 1
+            [-0.5, 0.5, 0.5],   // Vertex 2
+            [-0.5, 0.5, -0.5],  // Vertex 3
+            [0.5, -0.5, -0.5],  // Vertex 4
+            [0.5, -0.5, 0.5],   // Vertex 5
+            [0.5, 0.5, 0.5],    // Vertex 6
+            [0.5, 0.5, -0.5]    // Vertex 7
+        ];
+
+        // Polygon Listing
+        var polygons = [
+            [0, 1, 2, 3], // Polygon 0 (Front face)
+            [4, 5, 6, 7], // Polygon 1 (Back face)
+            [0, 1, 5, 4], // Polygon 2 (Left face)
+            [2, 3, 7, 6], // Polygon 3 (Right face)
+            [0, 3, 7, 4], // Polygon 4 (Top face)
+            [1, 2, 6, 5]  // Polygon 5 (Bottom face)
+        ];
+
+        var canvas = document.getElementById('canvas');
+        var gl = canvas.getContext('webgl');
+
+        // Resize the canvas when the window is resized
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        // Initialize the WebGL context
+        function init() {
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas, false);
+
+            gl.clearColor(1, 1, 1, 1);
+            gl.enable(gl.DEPTH_TEST);
+            gl.depthFunc(gl.LESS);
+
+            // Create vertex buffer and bind data
+            var vertexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(flatten(vertices)), gl.STATIC_DRAW);
+
+            // Create index buffer and bind data
+            var indexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(flatten(polygons)), gl.STATIC_DRAW);
+
+            // Vertex shader source code
+            var vertexShaderSource = `
+                attribute vec3 aPosition;
+                uniform mat4 uModelViewMatrix;
+                uniform mat4 uProjectionMatrix;
+
+                void main() {
+                    gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aPosition, 1.0);
+                }
+            `;
+
+            // Fragment shader source code
+            var fragmentShaderSource = `
+                precision mediump float;
+                uniform vec3 uColor;
+
+                void main() {
+                    gl_FragColor = vec4(uColor, 1.0);
+                }
+            `;
+
+            // Create vertex shader object
+            var vertexShader = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vertexShader, vertexShaderSource);
+            gl.compileShader(vertexShader);
+
+            // Create fragment shader object
+            var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fragmentShader, fragmentShaderSource);
+            gl.compileShader(fragmentShader);
+
+            // Create shader program and attach shaders
+            var shaderProgram = gl.createProgram();
+            gl.attachShader(shaderProgram, vertexShader);
+            gl.attachShader(shaderProgram, fragmentShader);
+            gl.linkProgram(shaderProgram);
+            gl.useProgram(shaderProgram);
+
+            // Get attribute and uniform locations
+            var aPositionLocation = gl.getAttribLocation(shaderProgram, 'aPosition');
+            var uModelViewMatrixLocation = gl.getUniformLocation(shaderProgram, 'uModelViewMatrix');
+            var uProjectionMatrixLocation = gl.getUniformLocation(shaderProgram, 'uProjectionMatrix');
+            var uColorLocation = gl.getUniformLocation(shaderProgram, 'uColor');
+
+            // Enable the vertex attribute array
+            gl.enableVertexAttribArray(aPositionLocation);
+            gl.vertexAttribPointer(aPositionLocation, 3, gl.FLOAT, false, 0, 0);
+
+            // Set projection matrix
+            var projectionMatrix = mat4.create();
+            mat4.frustum(projectionMatrix, -canvas.width / canvas.height, canvas.width / canvas.height, -1, 1, 2, 100);
+
+            // Set model-view matrix
+            var modelViewMatrix = mat4.create();
+            mat4.translate(modelViewMatrix, modelViewMatrix, [0, 0, -3]);
+            mat4.rotateX(modelViewMatrix, modelViewMatrix, radians(60));
+
+            // Render function
+            function render() {
+                gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+                gl.uniformMatrix4fv(uProjectionMatrixLocation, false, projectionMatrix);
+                gl.uniformMatrix4fv(uModelViewMatrixLocation, false, modelViewMatrix);
+
+                for (var i = 0; i < 6; i++) {
+                    gl.uniform3fv(uColorLocation, [1, 0, 0]); // Set color to red
+                    gl.drawElements(gl.LINE_LOOP, 4, gl.UNSIGNED_SHORT, i * 4 * 2); // 4 vertices per polygon, 2 bytes per vertex
+                }
+
+                requestAnimationFrame(render);
+            }
+
+            render();
+        }
+
+        // Utility function to flatten a nested array
+        function flatten(arr) {
+            return arr.reduce(function (acc, val) {
+                return acc.concat(val);
+            }, []);
+        }
+
+        // Utility function to convert degrees to radians
+        function radians(degrees) {
+            return degrees * Math.PI / 180;
+        }
+
+        // Start the program
+        init();
+    </script>
+</body>
+</html>

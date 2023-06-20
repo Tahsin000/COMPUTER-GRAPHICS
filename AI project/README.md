@@ -1,4 +1,4 @@
-# AI project
+# Artificial intelligence makes your project easy.
 
 1. Pong: A classic game where two players control paddles to hit a ball back and forth.
 2. Snake: The player controls a snake that grows longer as it eats food while avoiding collisions with its own body or walls.
